@@ -1,0 +1,64 @@
+.Chat{
+    flex: 0.75;
+    height: 100%;
+}
+.ChatHeader{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+.ChatHeaderInfo{
+    flex: 1;
+    padding-left: 20px;
+}
+.ChatBody{
+    flex: 1;
+    height: 75%;
+    background-color: gray;
+    padding: 30px;
+    overflow-y: scroll;
+}
+.ChatMessage{
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 30px;
+}
+.ChatReciever{
+    margin-left: auto;
+    background-color: #dcf8c6;
+}
+.ChatName{
+    position: absolute;
+    top: -15px;
+    font-weight: 800;
+    font-size: xx-small;
+}
+.Timestamp{
+    margin-left: 10px;
+    font-size: xx-small;
+}
+.ChatFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
+.ChatFooter > form {
+    flex: 1;
+    display: flex;
+}
+.ChatFooter > form > input{
+    flex: 1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+}
+.ChatFooter > form > button{
+    visibility: hidden;
+}
