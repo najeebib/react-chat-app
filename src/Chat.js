@@ -1,9 +1,7 @@
 import React,{ useEffect, useState } from 'react'
 import "./Chat.css"
-import {IconButton, Avatar} from '@mui/material';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import MicIcon from '@mui/icons-material/Mic';
+import {Avatar} from '@mui/material';
+
 import {useParams} from "react-router-dom";
 import db from './firebase';
 import { useStateValue } from './StateProvider';
@@ -52,16 +50,11 @@ const sendMessage = (e) =>{
         <div className="ChatHeaderInfo">
             <h3>{RoomName}</h3>
         </div>
-        <div className="ChatHeaderRight">
-          <IconButton style={{marginRight: '1vw',fontSize: '24px'}}>
-            <MoreVertIcon/>
-          </IconButton>
-        </div>
           
       </div>
       <div className="ChatBody">{console.log(messages)}
         {messages.map((message) => (
-          <div className={`ChatMessage ${user.displayName == message.name&& 'ChatReciever'}`}>
+          <div className={`ChatMessage ${user.displayName === message.name&& 'ChatReciever'}`}>
           <span className="ChatName">{message.name}</span>
             {message.message}
             <span className="Timestamp">
@@ -71,16 +64,11 @@ const sendMessage = (e) =>{
         ))}
       </div>
       <div className="ChatFooter">
-      <IconButton style={{padding: '10px',color: 'gray'}}>
-        <EmojiEmotionsIcon />
-      </IconButton>
+
         <form>
             <input value={input} onChange={(e)=> setInput(e.target.value)} placeholder="Type a message" type="text"/>
             <button onClick={sendMessage} type="submit">Send a message</button>
         </form>
-        <IconButton style={{padding: '10px',color: 'gray'}}>
-          <MicIcon/>
-        </IconButton>
       </div>
     </div>
   )
