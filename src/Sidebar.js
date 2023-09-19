@@ -13,6 +13,7 @@ const Sidebar = () => {
     const [search,setSearch] = useState('');
 
     useEffect(()=>{
+        //get the chat rooms from firebase
         db.collection('Chats').onSnapshot(snapshot => (
             setRooms(snapshot.docs.map(doc => 
                 ({
@@ -22,6 +23,7 @@ const Sidebar = () => {
             ))
         ));
     },[]);
+    //display the chat room in the sidebar
     return (
         <div className="Sidebar">
             <div className="SidebarHeader">

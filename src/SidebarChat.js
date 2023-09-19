@@ -15,13 +15,14 @@ function SidebarChat({id,name,addNewChat}) {
     useEffect(() =>{
       if(id)
       {
+        //get the chat messages from firebase
         db.collection('Chats').doc(id).collection('messages').orderBy('timestamp','asc')
         .onSnapshot(snapshot => (setMessages(snapshot.docs.map(doc => doc.data())))
         );
       }
   },[id]);
 
-
+    //create new chat room
     const creatChat = () =>{
         const roomName  = prompt("Please enter a name");
         if(roomName)
@@ -31,12 +32,13 @@ function SidebarChat({id,name,addNewChat}) {
           });
         }
     }
+    //display the messages from firebase
   return !addNewChat ? (
     <Link to={`/chats/${id}`}>
       <div className="SidebarChat"> 
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
         <div className="SidebarChatinfo">
-            <h2>{name}</h2>
+            <h2>{name}</h2>{}
             <p>{messages[0] &&messages[0].message}</p>
         </div>
     </div>

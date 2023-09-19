@@ -13,7 +13,7 @@ function Chat() {
   const [RoomName,setRoomName] = useState('');
   const [messages,setMessages] = useState([]);
   const [{user},dispatch] = useStateValue();
-
+  //get the chat room name and messages from firebase
   useEffect(() =>{
     if(chatId)
     {
@@ -31,7 +31,7 @@ function Chat() {
   useEffect(() =>{
       setSeed(Math.floor(Math.random() * 5000));
   },[]);
-
+//send the message to the the chat room messages collection for this room
 const sendMessage = (e) =>{
   e.preventDefault();
   
