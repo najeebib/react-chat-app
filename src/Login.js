@@ -5,6 +5,7 @@ import { actionTypes } from './reducer'
 import { useStateValue } from './StateProvider'
 function Login() {
     const [{},dispatch] = useStateValue();
+    //login using google sigin popup with firebase
     const signIn = () => {
         auth.signInWithPopup(provider).then(result =>
             dispatch({

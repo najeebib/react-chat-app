@@ -13,7 +13,7 @@ function App() {
   
   const [{ user }] = useStateValue();
 
-  return (
+  return (//Display login screen if user not logged in
     <div className="App">
       {!user ? (
          <Login/>
