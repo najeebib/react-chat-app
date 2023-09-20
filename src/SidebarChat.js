@@ -32,7 +32,7 @@ function SidebarChat({id,name,addNewChat}) {
           });
         }
     }
-    //display the messages from firebase
+    //display the chat room and last message from firebase
   return !addNewChat ? (
     <Link to={`/chats/${id}`}>
       <div className="SidebarChat"> 
