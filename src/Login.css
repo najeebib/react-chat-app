@@ -1,43 +1,63 @@
-/* Update your Login.css */
-.Login {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important; /* Center vertically */
-  align-items: center !important; /* Center horizontally */
-  height: 100vh !important;
-  background-color: #f0f0f0 !important;
+/* Login.css */
+
+.login {
+  margin: 0 auto;
+  max-width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Update your Login.css */
-.LoginContainer {
-  text-align: center !important;
-  display: flex !important; /* Add this */
-  flex-direction: column !important; /* Add this to center text vertically */
-  align-items: center !important; /* Add this to center text horizontally */
+h2 {
+  color: #333;
+  margin-bottom: 20px;
 }
 
-  
-  /* Style the text */
-  .LoginText h1 {
-    font-size: 24px; /* Adjust font size as needed */
-    margin-bottom: 20px; /* Spacing between text and button */
-  }
-  
-  /* Style the button */
-  /* Update your Login.css */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
 button {
-  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
+  padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 20px; /* Add this for spacing between text and button */
 }
 
-  
-  button:hover {
-    background-color: #0056b3; /* Button background color on hover */
-  }
-  
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
