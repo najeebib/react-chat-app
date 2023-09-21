@@ -4,7 +4,6 @@ import {Avatar} from '@mui/material';
 
 import {useParams} from "react-router-dom";
 import db from './firebase';
-import { useStateValue } from './StateProvider';
 import firebase from "firebase/compat/app";
 function Chat() {
   let {chatId} = useParams();
@@ -12,7 +11,6 @@ function Chat() {
   const [input,setInput] = useState('');
   const [RoomName,setRoomName] = useState('');
   const [messages,setMessages] = useState([]);
-  const [{user},dispatch] = useStateValue();
   //get the chat room name and messages from firebase
   useEffect(() =>{
     if(chatId)
@@ -35,11 +33,11 @@ function Chat() {
 const sendMessage = (e) =>{
   e.preventDefault();
   
-  db.collection('Chats').doc(chatId).collection('messages').add({
+  /*db.collection('Chats').doc(chatId).collection('messages').add({
     message: input,
     name: user.displayName,
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  })
+  })*/
   setInput("")
 }
 
@@ -54,7 +52,7 @@ const sendMessage = (e) =>{
       </div>
       <div className="ChatBody">{console.log(messages)}
         {messages.map((message) => (
-          <div className={`ChatMessage ${user.displayName === message.name&& 'ChatReciever'}`}>
+          <div className={`ChatMessage ${"" === message.name&& 'ChatReciever'}`}>
           <span className="ChatName">{message.name}</span>
             {message.message}
             <span className="Timestamp">

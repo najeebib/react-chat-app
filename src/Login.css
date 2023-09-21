@@ -1,16 +1,21 @@
+/* Update your Login.css */
 .Login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    height: 100vh; /* 100% of the viewport height */
-    background-color: #f0f0f0; /* Background color, adjust as needed */
-  }
-  
-  /* Style the container for text and button */
-  .LoginContainer {
-    text-align: center;
-  }
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; /* Center vertically */
+  align-items: center !important; /* Center horizontally */
+  height: 100vh !important;
+  background-color: #f0f0f0 !important;
+}
+
+/* Update your Login.css */
+.LoginContainer {
+  text-align: center !important;
+  display: flex !important; /* Add this */
+  flex-direction: column !important; /* Add this to center text vertically */
+  align-items: center !important; /* Add this to center text horizontally */
+}
+
   
   /* Style the text */
   .LoginText h1 {
@@ -19,15 +24,18 @@
   }
   
   /* Style the button */
-  button {
-    padding: 10px 20px;
-    background-color: #007bff; /* Button background color, adjust as needed */
-    color: #fff; /* Button text color */
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+  /* Update your Login.css */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px; /* Add this for spacing between text and button */
+}
+
   
   button:hover {
     background-color: #0056b3; /* Button background color on hover */

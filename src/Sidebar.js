@@ -5,13 +5,14 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import SidebarChat from "./SidebarChat";
 import db from "./firebase"
-import { useStateValue } from './StateProvider'
 
 const Sidebar = () => {
+    const [seed,setSeed] = useState('');
     const [rooms,setRooms] = useState([]);
-    const [{user},dispatch] = useStateValue();
     const [search,setSearch] = useState('');
-
+    useEffect(() =>{
+        setSeed(Math.floor(Math.random() * 5000));
+    },[]);
     useEffect(()=>{
         //get the chat rooms from firebase
         db.collection('Chats').onSnapshot(snapshot => (
@@ -27,7 +28,7 @@ const Sidebar = () => {
     return (
         <div className="Sidebar">
             <div className="SidebarHeader">
-                <Avatar src={user?.photoURL}/>
+                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
             </div>
             <div className="SidebarSearch">
                 <div className="SidebarSearchContainer">

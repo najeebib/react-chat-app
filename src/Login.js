@@ -1,19 +1,16 @@
 import React from 'react'
 import "./Login.css"
-import {auth,provider} from "./firebase"
-import { actionTypes } from './reducer'
-import { useStateValue } from './StateProvider'
-function Login() {
-    const [{},dispatch] = useStateValue();
+import { useNavigate } from 'react-router-dom';
+
+function Login({ setIsLoggedIn }) {
+  const navigate = useNavigate();
+
     //login using google sigin popup with firebase
     const signIn = () => {
-        auth.signInWithPopup(provider).then(result =>
-            dispatch({
-                type: actionTypes.SET_USER,
-                user: result.user,
-              })
-      
-            ).catch(error => alert(error));
+      setIsLoggedIn(true);
+
+      // Redirect to the chat page
+      navigate('/chat');
     }
   return ( 
     <div className="Login">

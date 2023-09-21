@@ -6,28 +6,39 @@ import {
   Routes, 
   Route,
 } from "react-router-dom";
-import React from 'react';
+import {useState,React} from 'react';
 import Login from "./Login"
-import { useStateValue } from './StateProvider';
 function App() {
-  
-  const [{ user }] = useStateValue();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
 
-  return (//Display login screen if user not logged in
+
+  return (
     <div className="App">
-      {!user ? (
-         <Login/>
-      ) : (
-        <div className="chat">
+       
           <Router>
-          <Sidebar/>
-            <Routes>
-              <Route path="/chats/:chatId" element={<Chat />} />
-              <Route path="/" element={<Chat />} />
-            </Routes>
+            {!isLoggedIn &&(
+               <Routes>
+                <Route
+                 path="/"
+                 element={<Login setIsLoggedIn={setIsLoggedIn} />} // Pass setIsLoggedIn to Login
+               />
+             </Routes>
+            )}
+            {isLoggedIn &&(
+              
+              <div className="chat">
+                <Sidebar/>
+
+                <Routes>
+                  <Route path="/chats/:chatId" element={<Chat />} />
+                  <Route path="/chat" element={<Chat />} />
+                </Routes>
+                </div>
+              
+            )}
+          
           </Router>
-        </div>
-      )}
+        
     </div>
     
       
