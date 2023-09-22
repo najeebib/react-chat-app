@@ -3,7 +3,7 @@ import { React, useState } from 'react'
 import "./Login.css"
 import { useNavigate } from 'react-router-dom';
 import {Link} from "react-router-dom"
-
+import { auth } from './firebase';
 function Login({ setIsLoggedIn }) {
 
   const [formData, setFormData] = useState({
@@ -33,10 +33,7 @@ function Login({ setIsLoggedIn }) {
 
   const navigate = useNavigate();
 
-    //login using google sigin popup with firebase
-    const signIn = () => {
-      
-    }
+    
   return ( 
     <div className="login">
       <h2>Login</h2>
@@ -65,7 +62,7 @@ function Login({ setIsLoggedIn }) {
       </form>
       <p>
         Don't have an account?{' '}
-        <Link to="/register">Register here</Link>
+        <Link to="/Register">Register here</Link>
       </p>
     </div>
   )

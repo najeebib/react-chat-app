@@ -1,6 +1,7 @@
 import './App.css';
 import Sidebar from "./Sidebar";
 import Chat from "./Chat";
+import Register from './Register';
 import {
   BrowserRouter as Router, 
   Routes, 
@@ -21,6 +22,10 @@ function App() {
                 <Route
                  path="/"
                  element={<Login setIsLoggedIn={setIsLoggedIn} />} // Pass setIsLoggedIn to Login
+               />
+               <Route
+                 path="/Register"
+                 element={<Register />} // Pass setIsLoggedIn to Login
                />
              </Routes>
             )}
