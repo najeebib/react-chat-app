@@ -50,7 +50,7 @@ function App() {
                 <Sidebar name={name}/>
 
                 <Routes>
-                  <Route path="/chats/:chatId" element={<Chat />} />
+                  <Route path="/chats/:chatId" element={<Chat name={name}/>} />
                   <Route path="/" element={<Chat />} />
                 </Routes>
                 </div>
