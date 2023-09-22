@@ -3,8 +3,9 @@ import { React, useState } from 'react'
 import "./Login.css"
 import { useNavigate } from 'react-router-dom';
 import {Link} from "react-router-dom"
-import { auth } from './firebase';
-function Login({ setIsLoggedIn }) {
+import firebase from 'firebase/compat/app';
+
+function Login({ setIsLoggedIn ,setUID}) {
 
   const [formData, setFormData] = useState({
     email: '',
@@ -21,10 +22,28 @@ function Login({ setIsLoggedIn }) {
     // Here, you can add code to send login data to your server or perform authentication.
     // For this example, we'll just log the data to the console.
     console.log(formData);
-    setIsLoggedIn(true);
 
-      // Redirect to the chat page
+    firebase.auth().signInWithEmailAndPassword(formData.email, formData.password)
+    .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
+      // ...
+      console.log(user)
+      setUID(user.uid)
+      setIsLoggedIn(true);
       navigate('/chat');
+
+     })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+
+
+
+
+    setUID("id")
+      // Redirect to the chat page
   };
 
 

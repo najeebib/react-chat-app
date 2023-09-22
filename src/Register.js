@@ -1,31 +1,33 @@
 import { React, useState } from 'react'
-
+import db from "./firebase"
 import "./Register.css"
 import { useNavigate } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 
 function Register() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-      });
-
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-      };
+    
+      const [name,setName] = useState(''); 
+      const [email,setEmail] = useState(''); 
+      const [password,setPass] = useState(''); 
+      
     
       const handleSubmit = (e) => {
         e.preventDefault();
         // Here, you can add code to send login data to your server or perform authentication.
         // For this example, we'll just log the data to the console.
-        console.log(formData);
-        firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Signed in 
             var user = userCredential.user;
             // ...
+            const uid = user.uid;
+            db.collection('Users').doc(uid).set({
+              Name: name,
+              Email: email,
+              // Other user data you want to store
+            });
+      
             navigate('/');
             })
         .catch((error) => {
@@ -43,12 +45,22 @@ function Register() {
         <h2>Register an account</h2>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <label>Name:</label>
+          <input
+            type="name"
+            name="name"
+            value={name}
+            onChange={(e)=> setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e)=> setEmail(e.target.value)}
             required
           />
         </div>
@@ -57,8 +69,8 @@ function Register() {
           <input
             type="password"
             name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e)=> setPass(e.target.value)}
             required
           />
         </div>

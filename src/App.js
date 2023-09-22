@@ -7,12 +7,20 @@ import {
   Routes, 
   Route,
 } from "react-router-dom";
-import {useState,React} from 'react';
+import {useState,React,useEffect} from 'react';
 import Login from "./Login"
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+  const [userUID, setUID] = useState(""); // State to track login status
 
 
+  useEffect(() => {
+    if (isLoggedIn)
+    {
+      
+    }
+
+  },[isLoggedIn, userUID]);
   return (
     <div className="App">
        
@@ -21,7 +29,7 @@ function App() {
                <Routes>
                 <Route
                  path="/"
-                 element={<Login setIsLoggedIn={setIsLoggedIn} />} // Pass setIsLoggedIn to Login
+                 element={<Login setIsLoggedIn={setIsLoggedIn} setUID={setUID} />} // Pass setIsLoggedIn to Login
                />
                <Route
                  path="/Register"
