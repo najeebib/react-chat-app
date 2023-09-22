@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import SidebarChat from "./SidebarChat";
 import db from "./firebase"
 
-const Sidebar = () => {
+const Sidebar = ({name}) => {
     const [seed,setSeed] = useState('');
     const [rooms,setRooms] = useState([]);
     const [search,setSearch] = useState('');
@@ -29,6 +29,7 @@ const Sidebar = () => {
         <div className="Sidebar">
             <div className="SidebarHeader">
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
+                <h1>{name}</h1>
             </div>
             <div className="SidebarSearch">
                 <div className="SidebarSearchContainer">

@@ -31,7 +31,6 @@ function Login({ setIsLoggedIn ,setUID}) {
       console.log(user)
       setUID(user.uid)
       setIsLoggedIn(true);
-      navigate('/chat');
 
      })
     .catch((error) => {

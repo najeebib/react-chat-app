@@ -5,17 +5,21 @@
 }
 .SidebarHeader {
     display: flex;
-    justify-content: space-between;
+  align-items: center; /* Center vertically */
+  padding: 10px; /* Add padding as needed */
     padding: 20px;
     border-right: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 }
-.SidebarHeaderRight {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 10vw;
-}
+.SidebarHeader .avatar {
+    margin-right: 10px; /* Add spacing between the avatar and the user name */
+  }
+  
+  .SidebarHeader h1 {
+    flex: 1; /* Allow the user name to expand and take available space */
+    font-size: 18px; /* Adjust the font size as needed */
+    text-align: center; /* Center the text horizontally within its container */
+  }
 .SidebarSearch{
     display: flex;
     align-items: center;

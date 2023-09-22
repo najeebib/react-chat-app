@@ -9,18 +9,25 @@ import {
 } from "react-router-dom";
 import {useState,React,useEffect} from 'react';
 import Login from "./Login"
+import db from './firebase';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
   const [userUID, setUID] = useState(""); // State to track login status
-
+  const [name,setName] = useState('');
 
   useEffect(() => {
     if (isLoggedIn)
     {
-      
+      db.collection('Users').doc(userUID).onSnapshot(snapshot => {
+        const userData = snapshot.data();
+        if (userData) {
+          setName(userData.Name);
+        }
+      });
     }
 
-  },[isLoggedIn, userUID]);
+  },[isLoggedIn]);
   return (
     <div className="App">
        
@@ -40,11 +47,11 @@ function App() {
             {isLoggedIn &&(
               
               <div className="chat">
-                <Sidebar/>
+                <Sidebar name={name}/>
 
                 <Routes>
                   <Route path="/chats/:chatId" element={<Chat />} />
-                  <Route path="/chat" element={<Chat />} />
+                  <Route path="/" element={<Chat />} />
                 </Routes>
                 </div>
               
