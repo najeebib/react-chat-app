@@ -12,37 +12,27 @@ function Login({ setIsLoggedIn ,setUID}) {
     password: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e) => {//change the values on change
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => {//login onclick
     e.preventDefault();
-    // Here, you can add code to send login data to your server or perform authentication.
-    // For this example, we'll just log the data to the console.
     console.log(formData);
 
     firebase.auth().signInWithEmailAndPassword(formData.email, formData.password)
     .then((userCredential) => {
-      // Signed in
-      var user = userCredential.user;
-      // ...
-      console.log(user)
-      setUID(user.uid)
-      setIsLoggedIn(true);
+      var user = userCredential.user;//get user details
+      setUID(user.uid)//set the current user id
+      setIsLoggedIn(true);//the user is logged in succesfully 
 
      })
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
+      alert("Error" + errorCode + "\n" + errorMessage)
     });
-
-
-
-
-    setUID("id")
-      // Redirect to the chat page
   };
 
 

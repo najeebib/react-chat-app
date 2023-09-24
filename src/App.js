@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     if (isLoggedIn)
     {
-      db.collection('Users').doc(userUID).onSnapshot(snapshot => {
+      db.collection('Users').doc(userUID).onSnapshot(snapshot => {//get the current user name
         const userData = snapshot.data();
         if (userData) {
           setName(userData.Name);

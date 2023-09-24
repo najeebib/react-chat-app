@@ -14,29 +14,24 @@ function Register() {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        // Here, you can add code to send login data to your server or perform authentication.
-        // For this example, we'll just log the data to the console.
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)//create new user using firebase authentication
         .then((userCredential) => {
-            // Signed in 
             var user = userCredential.user;
-            // ...
-            const uid = user.uid;
+            const uid = user.uid;//add new registered user to users collection
             db.collection('Users').doc(uid).set({
               Name: name,
               Email: email,
-              // Other user data you want to store
             });
       
-            navigate('/');
+            navigate('/');//go to login screen
             })
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-             // ..
+            alert("Error" + errorCode + "\n" + errorMessage)
+
         });
 
-        // Redirect to the chat page
         
       };
 
