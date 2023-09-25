@@ -5,6 +5,9 @@
     border-bottom: 1px solid lightgray;
     
 }
+.SidebarChat p{
+    text-align: left;
+}
 a {
     text-decoration: none !important;
     color: black;
