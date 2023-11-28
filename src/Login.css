@@ -1,6 +1,4 @@
-/* Login.css */
-
-.register {
+.login {
   margin: 0 auto;
   max-width: 300px;
   padding: 20px;
@@ -26,7 +24,8 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="name"]  {
   width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
